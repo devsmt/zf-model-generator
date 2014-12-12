@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+$database   = '';
+$username   = '';
+$password   = '';
+$output_dir = '/var/www/zf_model_' .$database;
+
+$cur_dir = dirname( realpath(__FILE__) );
+
+$cmd = "$cur_dir/zf-model-generator/zf-model-generator $database $username $password $output_dir";
+echo `$cmd`;
+
+$cmd = "meld ./application/models/ ".$output_dir;
+`$cmd`;
